@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Detalhes do Clima"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#ffff"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView6"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/weater"
+        android:layout_marginTop="50dp"
+        android:layout_weight="0.06" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Cidade"
+        android:id="@+id/tvNomeCidade"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Temperatura Maxima: "
+        android:id="@+id/tvTpMaxima"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="3dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Temperatura Minima: "
+        android:id="@+id/tvTpMinima"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="3dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Descricao do Tempo: "
+        android:id="@+id/tvDescTempo"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="3dp" />
+
+</LinearLayout>

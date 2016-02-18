@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="30dp"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout5"
+            android:layout_alignParentTop="true"
+            android:layout_alignBottom="@+id/linearLayout7"
+            android:layout_gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="81dp"
+                android:layout_height="81dp"
+                android:id="@+id/ivCidade"
+                android:src="@drawable/map"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvNomeCidade"
+            android:layout_width="wrap_content"
+            android:layout_height="47dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignWithParentIfMissing="true"
+            android:gravity="center"
+            android:text="Nome da Cidade"
+            android:layout_marginTop="13dp"
+            android:textSize="20sp"
+            android:layout_weight="0.33" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
