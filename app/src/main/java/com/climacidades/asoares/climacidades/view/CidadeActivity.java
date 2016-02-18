@@ -56,7 +56,7 @@ public class CidadeActivity extends AppCompatActivity {
         recycleViewCidades.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Log.i("POSIÇÃO", String.valueOf(position));
+                        //Log.i("POSIÇÃO", String.valueOf(position));
                         //Toast.makeText(CidadeActivity.this, ""+position, Toast.LENGTH_SHORT).show();
 
                         Bundle bundle = new Bundle();
