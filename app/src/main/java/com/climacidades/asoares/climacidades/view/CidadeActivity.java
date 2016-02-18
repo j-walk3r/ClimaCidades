@@ -1,5 +1,6 @@
 package com.climacidades.asoares.climacidades.view;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,7 @@ public class CidadeActivity extends AppCompatActivity {
     private RecyclerView recycleViewCidades;
     private Facade facade;
     public static List<MonitoramentoCidades> mMonitoramentoCidadesList;
+    private static ProgressDialog pd = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,16 +44,31 @@ public class CidadeActivity extends AppCompatActivity {
 
 
         /**carregamento dos dados de clima das cidades**/
-        facade = new Facade();
-        mMonitoramentoCidadesList = new ArrayList<MonitoramentoCidades>();
-        mMonitoramentoCidadesList = facade.getDadosClimaCidades(MapFragment.mLatLng.latitude, MapFragment.mLatLng.longitude);
+        startProgressDialog("","Aguarde, localizando cidades...");
+        new Thread(new Runnable() {
+            @Override
+            public void run()
+            {
+                facade = new Facade();
+                mMonitoramentoCidadesList = new ArrayList<MonitoramentoCidades>();
+                mMonitoramentoCidadesList = facade.getDadosClimaCidades(MapFragment.mLatLng.latitude, MapFragment.mLatLng.longitude);
 
-        if(mMonitoramentoCidadesList != null)
-        {
-            /**colocando o resultado da api no adapter para criar a lista**/
-            CidadeAdapter cidadeAdapter = new CidadeAdapter(CidadeActivity.this, mMonitoramentoCidadesList);
-            recycleViewCidades.setAdapter(cidadeAdapter);
-        }
+                if(mMonitoramentoCidadesList != null)
+                {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            /**colocando o resultado da api no adapter para criar a lista**/
+                            CidadeAdapter cidadeAdapter = new CidadeAdapter(CidadeActivity.this, mMonitoramentoCidadesList);
+                            recycleViewCidades.setAdapter(cidadeAdapter);
+                            stopProgressDialog();
+                        }
+                    });
+
+                }
+            }
+        }).start();
+
 
         recycleViewCidades.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
@@ -70,5 +87,20 @@ public class CidadeActivity extends AppCompatActivity {
                     }
                 })
         );
+    }
+
+    public void startProgressDialog(String Title, String Message)
+    {
+        pd = new ProgressDialog(CidadeActivity.this);
+        pd.setTitle(Title);
+        pd.setMessage(Message);
+        pd.setCancelable(false);
+        pd.setIndeterminate(true);
+        pd.show();
+    }
+
+    public void stopProgressDialog()
+    {
+        pd.dismiss();
     }
 }
