@@ -85,7 +85,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
 
         /**Adiciona a marcacao no mapa**/
-        googleMap.addMarker(markerOptions);
+        //googleMap.addMarker(markerOptions);
 
         /** chamado quando o mapa recebe um click **/
         googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {

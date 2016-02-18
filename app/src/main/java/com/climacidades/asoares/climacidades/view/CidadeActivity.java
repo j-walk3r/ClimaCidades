@@ -43,7 +43,7 @@ public class CidadeActivity extends AppCompatActivity {
         recycleViewCidades.setLayoutManager(llm);
 
 
-        /**carregamento dos dados de clima das cidades**/
+
         startProgressDialog("","Aguarde, localizando cidades...");
         new Thread(new Runnable() {
             @Override
@@ -51,6 +51,8 @@ public class CidadeActivity extends AppCompatActivity {
             {
                 facade = new Facade();
                 mMonitoramentoCidadesList = new ArrayList<MonitoramentoCidades>();
+
+                /**carregamento dos dados de clima das cidades**/
                 mMonitoramentoCidadesList = facade.getDadosClimaCidades(MapFragment.mLatLng.latitude, MapFragment.mLatLng.longitude);
 
                 if(mMonitoramentoCidadesList != null)

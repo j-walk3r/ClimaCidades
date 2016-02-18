@@ -28,8 +28,9 @@ public class DetalhesCidadeActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhes_cidade);
 
-        Intent intent = getIntent();
 
+        /**recuperando a posicao da lista de MonitoramentoCidades**/
+        Intent intent = getIntent();
         Bundle params = intent.getExtras();
 
         if(params!=null)
@@ -37,11 +38,13 @@ public class DetalhesCidadeActivity extends AppCompatActivity{
             position = params.getInt("posicao");
         }
 
+        /**recuperando o id dos itens da tela**/
         tvTpMaxima = (TextView)findViewById(R.id.tvTpMaxima);
         tvNomeCidade = (TextView)findViewById(R.id.tvNomeCidade);
         tvTpMinima  = (TextView)findViewById(R.id.tvTpMinima);
         tvDescTempo = (TextView)findViewById(R.id.tvDescTempo);
 
+        /**preenchendo o objeto MonitoramentoCidades**/
         mMonitoramentoCidades = CidadeActivity.mMonitoramentoCidadesList.get(position);
 
 
@@ -50,8 +53,8 @@ public class DetalhesCidadeActivity extends AppCompatActivity{
         {
             tvNomeCidade.setText(mMonitoramentoCidades.getNomeCidade());
             tvDescTempo.setText("Descricao do Tempo: "+ mMonitoramentoCidades.getDadosTempo().get(0).getDescricao());
-            tvTpMaxima.setText("Temperatura Maxima: "+ mMonitoramentoCidades.getDadosMeteorologicos().getTemperaturaMaxima().toString());
-            tvTpMinima.setText("Temperatura Minima: " + mMonitoramentoCidades.getDadosMeteorologicos().getTemperaturaMinima().toString());
+            tvTpMaxima.setText("Temperatura Maxima: "+ mMonitoramentoCidades.getDadosMeteorologicos().getTemperaturaMaxima().toString()+"°C");
+            tvTpMinima.setText("Temperatura Minima: " + mMonitoramentoCidades.getDadosMeteorologicos().getTemperaturaMinima().toString()+"°C");
         }
 
 
