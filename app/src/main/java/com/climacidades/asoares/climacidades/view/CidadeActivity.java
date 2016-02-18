@@ -16,6 +16,7 @@ import com.climacidades.asoares.climacidades.adapter.CidadeAdapter;
 import com.climacidades.asoares.climacidades.facade.Facade;
 import com.climacidades.asoares.climacidades.fragments.MapFragment;
 import com.climacidades.asoares.climacidades.model.MonitoramentoCidades;
+import com.climacidades.asoares.climacidades.utility.Divider;
 import com.climacidades.asoares.climacidades.utility.RecyclerItemClickListener;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class CidadeActivity extends AppCompatActivity {
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recycleViewCidades.setLayoutManager(llm);
-
+        recycleViewCidades.addItemDecoration(new Divider(this));
 
 
         startProgressDialog("","Aguarde, localizando cidades...");
